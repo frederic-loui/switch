@@ -40,7 +40,14 @@ RUN apt-get install -y \
       python-yaml \
       wget \
       ethtool \
+      tcpdump \
+      locate \
       vim
+
+# install tenjin FLO
+RUN pip install tenjin
+# install tenjin FLO
+RUN pip install crc16
 
 # install scapy
 RUN mkdir -p /tmp/scapy ; \
@@ -104,10 +111,18 @@ RUN mkdir /tmp/p4ofagent ; \
     make install CPPFLAGS=-D_BMV2_ ; \
     rm -rf /tmp/p4ofagent
 
+RUN mkdir /tmp/ptf ; \
+    cd /tmp/ptf ; \
+    git clone https://github.com/p4lang/ptf.git ; \
+    cd ptf ; \
+    sudo python setup.py install ; \
+    rm -rf /tmp/ptf
+
 # build switch
 RUN git clone https://github.com/p4lang/switch ; \
     cd switch ; \
     git submodule update --init --recursive ; \
     ./autogen.sh ; \
-    ./configure --with-bmv2 --with-of ; \
-    make
+    ./configure --with-bmv2 --with-of --with-switchlink --prefix=/usr/local ; \
+    make ; \
+    make install ; ldconfig \
