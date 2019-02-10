@@ -136,7 +136,6 @@ RUN cd /switch ; \
     echo "P4_BMV2=\"\$P4_SWITCH/bmv2\"" >> p4.bashrc ; \
     echo "export PATH=\"\$P4_TESTS:\$P4_TOOLS:\$P4_BMV2:/usr/local/bin:\$PATH\"" >> p4.bashrc ; \
     echo "" ; \
-    source p4.bashrc
-
+    cat p4.bashrc >> /root/.bashrc
     
 
