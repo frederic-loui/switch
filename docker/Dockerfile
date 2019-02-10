@@ -50,6 +50,9 @@ RUN pip install tenjin
 # install crc16 
 RUN pip install crc16
 
+# scapy is complaining otherwise
+RUN ln -s /usr/sbin/tcpdump /usr/bin/tcpdump
+
 # install scapy
 RUN mkdir -p /tmp/scapy ; \
     cd /tmp/scapy ; \
