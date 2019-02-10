@@ -128,7 +128,8 @@ RUN git clone https://github.com/p4lang/switch ; \
     make ; \
     make install ; ldconfig 
 
-RUN echo "P4_SWITCH=\"/switch\"" > p4.bashrc ; \
+RUN cd /switch ; \
+    echo "P4_SWITCH=\"/switch\"" > p4.bashrc ; \
     echo "" ; \
     echo "P4_TESTS=\"\$P4_SWITCH/tests\"" >> p4.bashrc ; \
     echo "P4_TOOLS=\"\$P4_SWITCH/tools\"" >> p4.bashrc ; \
@@ -136,5 +137,6 @@ RUN echo "P4_SWITCH=\"/switch\"" > p4.bashrc ; \
     echo "export PATH=\"\$P4_TESTS:\$P4_TOOLS:\$P4_BMV2:/usr/local/bin:\$PATH\"" >> p4.bashrc ; \
     echo "" ; \
     source p4.bashrc
+
     
 
