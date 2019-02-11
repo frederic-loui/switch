@@ -38,6 +38,7 @@ RUN apt-get install -y \
       python-scipy \
       python-setuptools \
       python-yaml \
+      python-pypcap \
       wget \
       ethtool \
       tcpdump \
