@@ -126,4 +126,15 @@ RUN git clone https://github.com/p4lang/switch ; \
     ./autogen.sh ; \
     ./configure --with-bmv2 --with-of --with-switchlink --prefix=/usr/local ; \
     make ; \
-    make install ; ldconfig \
+    make install ; ldconfig 
+
+RUN echo "P4_SWITCH=\"/switch\"" > p4.bashrc
+    echo ""
+    echo "P4_TESTS=\"\$P4_SWITCH/tests\"" >> p4.bashrc
+    echo "P4_TOOLS=\"\$P4_SWITCH/tools\"" >> p4.bashrc
+    echo "P4_BMV2=\"\$P4_SWITCH/bmv2\"" >> p4.bashrc
+    echo "export PATH=\"\$P4_TESTS:\$P4_TOOLS:\$P4_BMV2:/usr/local/bin:\$PATH\""
+    echo ""
+    source p4.bashrc
+    
+
