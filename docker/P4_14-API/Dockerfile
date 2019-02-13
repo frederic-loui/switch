@@ -1,4 +1,4 @@
-FROM switch.p4:P4_14-base
+FROM floui/switch.p4:P4_14-base
 
 # build switch
 RUN git clone https://github.com/p4lang/switch ; \
